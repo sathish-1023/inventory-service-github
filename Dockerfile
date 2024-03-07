@@ -1,4 +1,3 @@
-
 FROM eclipse-temurin:21-jre-alpine as builder
 WORKDIR extracted
 COPY build/libs/*.jar application.jar
