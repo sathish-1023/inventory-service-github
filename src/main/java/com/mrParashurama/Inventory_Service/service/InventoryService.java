@@ -31,4 +31,7 @@ public class InventoryService {
 
 
     }
+    public String Connect(){
+        return "Success";
+    }
 }

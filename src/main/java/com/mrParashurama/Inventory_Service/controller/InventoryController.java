@@ -14,9 +14,14 @@ import java.util.List;
 public class InventoryController {
 
     private final InventoryService inventoryService;
+    @GetMapping("/con")
+    @ResponseStatus(HttpStatus.OK)
+    public String Connect(){
+        return inventoryService.Connect();
+    }
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<InventoryResponse> isInStock(@RequestParam List<String> skuCode) {
+    public List<InventoryResponse> isInStock(@RequestParam(value = "skuCode") List<String> skuCode) {
             return inventoryService.isInStock(skuCode);
     }
 }

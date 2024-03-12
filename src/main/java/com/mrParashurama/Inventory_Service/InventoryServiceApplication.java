@@ -4,11 +4,17 @@ import com.mrParashurama.Inventory_Service.model.Inventory;
 import com.mrParashurama.Inventory_Service.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-
+@EnableFeignClients
+@EnableDiscoveryClient
+@ImportAutoConfiguration({FeignAutoConfiguration.class})
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
@@ -25,7 +31,7 @@ public class InventoryServiceApplication {
 
 			inventory=new Inventory();
 			inventory.setSkuCode("iphone_13_red");
-			inventory.setQuantity(0);
+			inventory.setQuantity(1);
 			inventoryRepository.save(inventory);
 		};
 	}
